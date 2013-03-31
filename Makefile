@@ -26,6 +26,8 @@ clean:
 distclean: clean
 	@rm -rf riak_test deps
 
+test:
+	./riak_test -c sniffle -v -b none $(shell cd tests/; ls -1 *.erl | sed 's/.erl$$//' | awk '{print "-t " $$1}';)
 ##################
 # Dialyzer targets
 ##################
